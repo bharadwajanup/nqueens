@@ -265,20 +265,19 @@ def nqueens_successors(board):
 	qc=0
 	global counter
 	if count_pieces(board) == 0:
-		for c in range(0,N):
+		return [add_piece(board,0,c) for c in range(0,N)]
+		'''for c in range(0,N):
 			succ.append(add_piece(board,0,c))
 			counter = counter+1
-		return succ
+		return succ'''
 	for r in range(0,N):
 		if count_on_row(board,r) == 0 and count_pieces(board) < N:
 			next_possibility = get_next_queen(board,qr,qc)
-			#if next_possibility:
-			#	succ.append(add_piece(board,next_possibility[0],next_possibility[1]))
-			#	counter = counter+1
-			for possibility in next_possibility:
+			return [add_piece(board,possibility[0],possibility[1]) for possibility in next_possibility]
+			'''for possibility in next_possibility:
 				succ.append(add_piece(board,possibility[0],possibility[1]))
 				counter = counter+1
-			return succ
+			return succ'''
 				
 		for c in range(0,N):
 			if board[r][c] == 1:
